@@ -13,6 +13,7 @@ export class FireMessage23Service {
 
   constructor(private angularFireMessaging: AngularFireMessaging) {
 
+    // request permission for browser notifications...
     this.angularFireMessaging.requestPermission.pipe(
       map((res) => {
         console.log(res);
@@ -23,6 +24,7 @@ export class FireMessage23Service {
       console.log(res);
     });
 
+    // subscribing when token changes...
     this.angularFireMessaging.tokenChanges.subscribe(res => {
       console.log(res);
     })
