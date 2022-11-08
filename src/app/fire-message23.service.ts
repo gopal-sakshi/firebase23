@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/compat/messaging';
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,6 +14,7 @@ export class FireMessage23Service {
 
   constructor(private angularFireMessaging: AngularFireMessaging) {
 
+    // ==================> ASK PERMISSION FROM BROWSER ----> to show notifications
     this.angularFireMessaging.requestPermission.pipe(
       map((res) => {
         console.log(res);
@@ -23,9 +25,15 @@ export class FireMessage23Service {
       console.log(res);
     });
 
+    // ==================> PRINT token to console ---> whenever it changes
     this.angularFireMessaging.tokenChanges.subscribe(res => {
       console.log(res);
-    })
+    });
+
+    // ==================> subscribe to notifications
+    this.angularFireMessaging.messages.pipe().subscribe(res => {
+      console.log(res);
+    });  
   }
 
   getName() {

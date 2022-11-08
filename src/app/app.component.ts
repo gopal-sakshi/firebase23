@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     var name23 = this.fireMessage23.getName();
     console.log(name23);
+    // this.fireMessage23.listen();ss
   }
 
   /**
@@ -32,6 +33,14 @@ export class AppComponent implements OnInit{
    * 
    * https://console.firebase.google.com/u/2/project/gopal61288-01/settings/cloudmessaging/web:ZjdjNTIwN2UtNTc2Yi00NzdmLWE5M2QtZDE4Y2YzNDAwZmMz
    * 
+   * 
+   * it seems only for push notifications of fcm, we need these
+   * - firebase-messaging-sw.js
+   * - manifest.json
+   * - add these in angualr.json assets array
+   * 
+   * But if you want to use firebase as database (not push notification)
+   * - then, it seems, we do not need these...
    */
 
 }
